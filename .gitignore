@@ -1,0 +1,15 @@
+# Gradle Stuff
+.gradle
+build/
+target/
+
+# Intellij Idea
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OSX Stuff
+.DS_Store
+.AppleDouble
+.LSOverride

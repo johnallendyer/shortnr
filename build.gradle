@@ -1,0 +1,56 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot' 
+
+jar {
+    baseName = 'shortnr'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://dl.bintray.com/andsel/maven'
+    }
+    maven {
+        url 'https://repo.eclipse.org/content/repositories/paho-releases'
+    }
+    maven {
+        url 'https://repository.jboss.org/nexus/content/groups/public-jboss'
+    }
+    maven {
+        url 'http://download.osgeo.org/webdav/geotools/'
+    }
+}
+
+
+dependencies {
+    //platform
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-redis")
+
+    //utilities
+    compile 'com.google.guava:guava:18.0'
+    compile 'commons-validator:commons-validator:1.4.1'
+
+    //test
+    testCompile("org.springframework.boot:spring-boot-starter-test") 
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
